@@ -1,0 +1,26 @@
+server:
+  servlet:
+    context-path: /olwavespring-api
+  port: 8080
+# Spring properties
+spring:
+  jpa:
+    show-sql: true
+    properties:
+      hibernate:
+        ddl-auto: update
+        order_inserts: true
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+        jdbc:
+          batch_size: 50
+          lob:
+            non_contextual_creation: true
+        temp:
+          use_jdbc_metadata_defaults: false
+    name: olwaves
+  datasource:
+    type: com.zaxxer.hikari.HikariDataSource
+    url: jdbc:postgresql://ec2-54-160-109-68.compute-1.amazonaws.com:5432/d6eidlfu4jrnj4
+    driver-class-name: org.postgresql.Driver
+    username: rcekjkvkfuchlz
+    password: 6b62846c8af07eeaf88533b4ec40885a787bb09f71548690ad0476aaa840d6b1
