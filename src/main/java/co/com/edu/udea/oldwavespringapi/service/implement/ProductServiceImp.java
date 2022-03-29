@@ -1,6 +1,7 @@
 package co.com.edu.udea.oldwavespringapi.service.implement;
 
 import co.com.edu.udea.oldwavespringapi.dto.Item;
+import co.com.edu.udea.oldwavespringapi.dto.ItemDetail;
 import co.com.edu.udea.oldwavespringapi.dto.Page;
 import co.com.edu.udea.oldwavespringapi.model.Product;
 import co.com.edu.udea.oldwavespringapi.repository.ProductRepository;
@@ -39,6 +40,16 @@ public class ProductServiceImp implements ProductService {
         product.setSearchQuantity(product.getSearchQuantity() + 1);
         productRepository.save(product);
         return product;
+    }
+
+
+    @Override
+    public ItemDetail getProductDetails(String productCode) {
+        return productToItemDetail(productRepository.getProductDetailsByProductCode(productCode));
+    }
+
+    private ItemDetail productToItemDetail(Product product){
+        return new ItemDetail(product);
     }
 
 }

@@ -11,4 +11,6 @@ import java.util.List;
 @Repository
 public interface ProductRepository extends JpaRepository<Product, String>, JpaSpecificationExecutor<Product> {
     List <Product> getAllByNameLike(String name, Pageable pageable);
+
+    Product getProductDetailsByProductCode(String productCode);
 }
