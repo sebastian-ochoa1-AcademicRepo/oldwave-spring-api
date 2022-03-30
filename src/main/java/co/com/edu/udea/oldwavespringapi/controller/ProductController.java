@@ -2,6 +2,7 @@ package co.com.edu.udea.oldwavespringapi.controller;
 
 import co.com.edu.udea.oldwavespringapi.dto.ItemDetail;
 import co.com.edu.udea.oldwavespringapi.dto.Page;
+import co.com.edu.udea.oldwavespringapi.exception.ApiNotFoundException;
 import co.com.edu.udea.oldwavespringapi.service.ProductService;
 import io.swagger.annotations.ApiOperation;
 import lombok.RequiredArgsConstructor;
@@ -35,6 +36,13 @@ public class ProductController {
     @GetMapping("/detail")
     public ResponseEntity<ItemDetail> getProductsByName(
             @RequestParam(name = "code") String productCode){
-        return ResponseEntity.ok(productService.getProductDetails(productCode));
+        if(productCode==null){
+            throw new ApiNotFoundException("400 Trying");
+        }
+        try{
+            return ResponseEntity.ok(productService.getProductDetails(productCode));
+        }catch (NullPointerException e){
+            throw new ApiNotFoundException("No se encontró un producto con el código enviado");
+        }
     }
 }
