@@ -10,6 +10,7 @@ public class ItemDetail {
     public ItemDetail(Product product) {
         this.productCode = product.getProductCode();
         this.name = product.getName();
+        this.description = product.getDescription();
         this.brand = product.getBrand();
         this.city = product.getCity();
         this.price = product.getPrice();
@@ -20,6 +21,7 @@ public class ItemDetail {
 
     private String productCode;
     private String name;
+    private String description;
     private String brand;
     private String city;
     private Integer price;
