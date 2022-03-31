@@ -1,6 +1,6 @@
 server:
   servlet:
-    context-path: /olwavespring-api
+    context-path: /api
   port: 8089
 # Spring properties
 spring:

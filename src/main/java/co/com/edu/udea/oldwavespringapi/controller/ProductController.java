@@ -4,17 +4,16 @@ import co.com.edu.udea.oldwavespringapi.dto.ItemDetail;
 import co.com.edu.udea.oldwavespringapi.dto.Page;
 import co.com.edu.udea.oldwavespringapi.exception.ApiNotFoundException;
 import co.com.edu.udea.oldwavespringapi.service.ProductService;
+import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
+@Api(tags = "Product")
 @RequiredArgsConstructor
 @RestController
 @RequestMapping("product")
@@ -35,10 +34,10 @@ public class ProductController {
     }
 
     @ApiOperation(value = "Busca producto por codigo", notes = "Detalles del producto con codigo")
-    @GetMapping("/detail")
+    @GetMapping("/{code}/detail")
     public ResponseEntity<ItemDetail> getProductsByName(
             @ApiParam(name = "code", type = "String", value = "Código del producto", example = "1234", required = true)
-            @RequestParam(name = "code") String productCode){
+            @PathVariable(name = "code") String productCode){
         if(productCode==null){
             throw new ApiNotFoundException("400 Trying");
         }
