@@ -13,4 +13,4 @@ Para ejecutar el programa corra el comando
 
 Para ejecutar las pruebas unitarias corra el comando
 
-    gradle clean test --tests "co.com.edu.udea.oldwavespringapi.service.implement.ProductServiceImpTest"
+    gradle clean test
