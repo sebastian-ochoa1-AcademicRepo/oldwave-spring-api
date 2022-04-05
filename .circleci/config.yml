@@ -58,6 +58,7 @@ jobs:
     executor: heroku/default
 
     steps:
+      - checkout
       - attach_workspace:
           at: ~/repo
       - heroku/install
