@@ -2,13 +2,14 @@ package co.com.edu.udea.oldwavespringapi.service.implement;
 
 
 import co.com.edu.udea.oldwavespringapi.dto.Item;
+import co.com.edu.udea.oldwavespringapi.dto.ItemDetail;
 import co.com.edu.udea.oldwavespringapi.dto.Page;
 import co.com.edu.udea.oldwavespringapi.model.Product;
 import co.com.edu.udea.oldwavespringapi.repository.ProductRepository;
 import co.com.edu.udea.oldwavespringapi.service.ProductService;
 import org.junit.Assert;
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.BeforeEach;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 
@@ -28,19 +29,22 @@ public class ProductServiceImpTest {
 
     ProductService productService;
 
-    @Before
+    private Product product;
+
+    @BeforeEach
     public void init(){
         MockitoAnnotations.openMocks(this);
         productService = new ProductServiceImp(productRepository);
+
+        product = new Product();
+        product.setProductCode("1");
+        product.setName("Iphone");
+        product.setSearchQuantity(1);
     }
 
     @Test
     public void debeRetornarPageCuandoNameSeaIphoneYPageNumberSeaUnoYSizeSeaCinco(){
         //Arrange
-        Product product = new Product();
-        product.setProductCode("1");
-        product.setName("Iphone");
-        product.setSearchQuantity(1);
         List<Product> products = new ArrayList<>();
         products.add(product);
         Item item = new Item(product);
@@ -56,4 +60,15 @@ public class ProductServiceImpTest {
         Assert.assertEquals(pageEsperado.getItems().get(0).getName(),pageObtenido.getItems().get(0).getName());
     }
 
+    @Test
+    void getProductDetails() {
+        //Arrange
+        ItemDetail itemDetailEsperado = new ItemDetail(product);
+        ItemDetail itemDetailDado;
+        when(productRepository.getProductDetailsByProductCode(any())).thenReturn(product);
+        //Act
+        itemDetailDado = productService.getProductDetails("1");
+        //Assert
+        Assert.assertEquals(itemDetailEsperado,itemDetailDado);
+    }
 }
