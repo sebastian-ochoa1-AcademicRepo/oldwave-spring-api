@@ -1,12 +1,14 @@
 package co.com.edu.udea.oldwavespringapi.model;
 
+import co.com.edu.udea.oldwavespringapi.helper.StringToListConverter;
 import lombok.Data;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
-import java.awt.*;
+import javax.persistence.Convert;
+import java.util.List;
 
 @Data
 @Table(name = "products")
@@ -38,6 +40,7 @@ public class Product {
     @Column
     private String reseller;
     @Column
-    private String images;
+    @Convert(converter = StringToListConverter.class)
+    private List<String> images;
 
 }
