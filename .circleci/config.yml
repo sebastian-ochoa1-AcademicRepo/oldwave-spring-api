@@ -45,7 +45,24 @@ jobs:
       # run tests!
       - run: gradle test
 
+  deploy:
+    docker:
+      # specify the version you desire here
+      - image: circleci/heroku@1.2.6
+
+    executor: heroku/default
+
+    steps:
+      - chekout
+      - heroku/install
+      - heroku/deploy-via-git:
+          force: true
+
+
+
 workflows:
-  sample:
+  pipeline:
     jobs:
       - build-and-test
+
+    
