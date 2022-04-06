@@ -35,7 +35,7 @@ public class ProductController {
 
     @ApiOperation(value = "Busca producto por codigo", notes = "Detalles del producto con codigo")
     @GetMapping("/{code}/detail")
-    public ResponseEntity<ItemDetail> getProductsByName(
+    public ResponseEntity<ItemDetail> getProductDetails(
             @ApiParam(name = "code", type = "String", value = "Código del producto", example = "1234", required = true)
             @PathVariable(name = "code") String productCode){
         if(productCode==null){
