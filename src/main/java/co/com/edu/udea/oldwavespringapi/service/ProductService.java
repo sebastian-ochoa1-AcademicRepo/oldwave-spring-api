@@ -7,5 +7,5 @@ public interface ProductService {
 
      Page getPage(String name, Integer pageNumber, Integer size);
 
-    ItemDetail getProductDetails(String product_code);
+     ItemDetail getProductDetails(String product_code);
 }
