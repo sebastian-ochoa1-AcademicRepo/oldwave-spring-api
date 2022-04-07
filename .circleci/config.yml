@@ -48,6 +48,7 @@ jobs:
 
       # run tests!
       - run: gradle cleanTest test
+
       - persist_to_workspace:
           root: ~/repo
           paths:
