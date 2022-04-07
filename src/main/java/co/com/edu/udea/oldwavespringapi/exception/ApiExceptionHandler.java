@@ -39,7 +39,7 @@ public class ApiExceptionHandler extends  ResponseEntityExceptionHandler{
                 ZonedDateTime.now(ZoneId.of("Z")),
                 400,
                 badRequest,
-                "El parametro 'code' es obligatorio"
+                "Por favor verifica la URL o los parametros enviados"
         );
 
         return new ResponseEntity<>(apiException, badRequest);
