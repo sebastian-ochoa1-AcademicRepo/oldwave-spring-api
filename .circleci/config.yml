@@ -54,10 +54,8 @@ jobs:
           paths:
             - .
 
-  deploy:
-
+  deploy_dev:
     executor: heroku/default
-
     steps:
       - checkout
       - attach_workspace:
@@ -66,12 +64,35 @@ jobs:
       - heroku/deploy-via-git:
           force: true
 
+  deploy_prd:
+    executor: heroku/default
+    steps:
+      - checkout
+      - attach_workspace:
+          at: ~/repo
+      - heroku/install
+      - heroku/deploy-via-git:
+          app-name: $HEROKU_APP_NAME_PRD
+          force: true
+
 workflows:
   pipeline:
     jobs:
       - build-and-test
-      - deploy:
+
+      - deploy_dev:
+          filters:
+            branches:
+                only:
+                  - develop
           requires:
             - build-and-test
 
+      - deploy_prd:
+          filters:
+            branches:
+                only:
+                  - main
+          requires:
+            - build-and-test
 
