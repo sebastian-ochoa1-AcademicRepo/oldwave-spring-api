@@ -20,7 +20,7 @@ spring:
     name: olwaves
   datasource:
     type: com.zaxxer.hikari.HikariDataSource
-    url: jdbc:postgresql://ec2-54-160-109-68.compute-1.amazonaws.com:5432/d6eidlfu4jrnj4
+    url: jdbc:postgresql://ec2-18-215-96-22.compute-1.amazonaws.com:5432/d7gvbt21t337fo
     driver-class-name: org.postgresql.Driver
-    username: rcekjkvkfuchlz
-    password: 6b62846c8af07eeaf88533b4ec40885a787bb09f71548690ad0476aaa840d6b1
+    username: bgfvynqlyramxc
+    password: a84cac44c2af3599b73bc85d2f6cc771efcd2b86c027a099f5df326b93191dd9
