@@ -25,7 +25,7 @@ public class SwaggerConfig {
     }
 
     private ApiInfo apiInfo() {
-        return new ApiInfoBuilder().title("OldWaves")
+        return new ApiInfoBuilder().title("OldWave")
                 .description("Esta api permite consultar productos " +
                         "y detalles de productos al estilo mercadolibre")
                 .build();

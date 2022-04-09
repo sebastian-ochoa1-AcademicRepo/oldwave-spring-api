@@ -1,1 +1,1 @@
-web: java -jar target/apiestudiantes-0.0.1-SNAPSHOT.jar
+web: java -Dserver.port=$PORT -jar build/libs/oldwave-spring-api-0.0.1-SNAPSHOT.jar
